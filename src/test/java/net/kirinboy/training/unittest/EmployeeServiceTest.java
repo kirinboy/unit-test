@@ -2,6 +2,8 @@ package net.kirinboy.training.unittest;
 
 import net.kirinboy.training.unitteset.*;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.ArgumentCaptor;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -26,13 +28,14 @@ public class EmployeeServiceTest {
         assertThat(employee.getName()).isEqualTo("name");
     }
 
-    @Test
-    public void should_throw_exception_when_employee_id_is_empty() {
+    @ParameterizedTest
+    @ValueSource(longs = {0, -1, -100})
+    public void should_throw_exception_when_employee_id_is_less_than_0(long id) {
         // given
         EmployeeService employeeService = new EmployeeService(null);
 
         // when & then
-        assertThatThrownBy(() -> employeeService.getById(0L))
+        assertThatThrownBy(() -> employeeService.getById(id))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("empty employeeId");
     }

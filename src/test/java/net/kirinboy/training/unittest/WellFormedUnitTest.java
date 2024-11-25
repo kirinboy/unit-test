@@ -16,7 +16,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.*;
-import static org.mockito.Mockito.times;
 
 @ExtendWith(MockitoExtension.class)
 public class WellFormedUnitTest {
@@ -38,6 +37,18 @@ public class WellFormedUnitTest {
         assertThat(employee.getId()).isEqualTo(1L);
         assertThat(employee.getName()).isEqualTo("employee name");
         verify(employeeDao).getById(1L);
+    }
+
+    @Test
+    public void should_update_employee() {
+        Employee employee = new Employee(1L, "name");
+        when(employeeDao.getById(1L)).thenReturn(employee);
+
+        employeeService.updateEmployee(new EmployeeDto(1L, "new name"));
+
+        verify(employeeDao).getById(eq(1L));
+        verify(employeeDao).update(employeeCaptor.capture());
+        assertThat(employeeCaptor.getValue().getName()).isEqualTo("new name");
     }
 
     @Test
@@ -76,14 +87,33 @@ public class WellFormedUnitTest {
     }
 
     @Test
-    public void should_update_employee() {
+    public void should_use_matcher() {
+        when(employeeDao.getById(eq(1L))).thenReturn(new Employee(1L, "employee name"));
+        Employee employee = employeeService.getById(1L);
+
+        assertThat(employee).isNotNull();
+        assertThat(employee.getId()).isEqualTo(1L);
+        assertThat(employee.getName()).isEqualTo("employee name");
+        verify(employeeDao).getById(eq(1L));
+    }
+
+    @Test
+    public void misuse_argument_captor() {
         Employee employee = new Employee(1L, "name");
         when(employeeDao.getById(1L)).thenReturn(employee);
+        doNothing().when(employeeDao).update(employeeCaptor.capture());
 
         employeeService.updateEmployee(new EmployeeDto(1L, "new name"));
 
         verify(employeeDao).getById(eq(1L));
-        verify(employeeDao).update(employeeCaptor.capture());
         assertThat(employeeCaptor.getValue().getName()).isEqualTo("new name");
+    }
+
+    @Test
+    public void misuse_argument_captor2() {
+        ArgumentCaptor<Long> idCaptor = ArgumentCaptor.forClass(Long.class);
+        when(employeeDao.getById(idCaptor.capture())).thenReturn(new Employee(1L, "employee name"));
+        Employee employee = employeeService.getById(1L);
+        assertThat(idCaptor.getValue()).isEqualTo(1L);
     }
 }
