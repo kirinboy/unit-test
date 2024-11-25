@@ -1,6 +1,6 @@
 package net.kirinboy.training.unittest;
 
-import net.kirinboy.training.unitteset.*;
+import net.kirinboy.training.unittest.ai.*;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;

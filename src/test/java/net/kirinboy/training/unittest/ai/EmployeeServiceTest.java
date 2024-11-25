@@ -1,4 +1,4 @@
-package net.kirinboy.training.unitteset;
+package net.kirinboy.training.unittest.ai;
 
 import org.junit.jupiter.api.Test;
 import static org.mockito.Mockito.*;

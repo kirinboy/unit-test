@@ -1,7 +1,7 @@
 package net.kirinboy.training.unittest;
 
-import net.kirinboy.training.unitteset.Employee;
-import net.kirinboy.training.unitteset.EmployeeDao;
+import net.kirinboy.training.unittest.ai.Employee;
+import net.kirinboy.training.unittest.ai.EmployeeDao;
 
 import java.util.HashMap;
 import java.util.Map;

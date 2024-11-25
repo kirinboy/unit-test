@@ -1,4 +1,4 @@
-package net.kirinboy.training.unitteset;
+package net.kirinboy.training.unittest.ai;
 
 public class EmployeeNotFoundException extends RuntimeException {
     public EmployeeNotFoundException(String message) {

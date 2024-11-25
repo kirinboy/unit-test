@@ -1,8 +1,8 @@
 package net.kirinboy.training.unittest;
 
-import net.kirinboy.training.unitteset.Employee;
-import net.kirinboy.training.unitteset.EmployeeDao;
-import net.kirinboy.training.unitteset.EmployeeService;
+import net.kirinboy.training.unittest.ai.Employee;
+import net.kirinboy.training.unittest.ai.EmployeeDao;
+import net.kirinboy.training.unittest.ai.EmployeeService;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
