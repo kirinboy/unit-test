@@ -20,6 +20,9 @@ public class EmployeeService {
 
     public void updateEmployee(EmployeeDto employeeDto) {
         Employee employee = employeeDao.getById(employeeDto.employeeId());
+        if (employee == null) {
+            throw new EmployeeNotFoundException("employee not found");
+        }
         employee.setName(employeeDto.name());
         employeeDao.update(employee);
     }
