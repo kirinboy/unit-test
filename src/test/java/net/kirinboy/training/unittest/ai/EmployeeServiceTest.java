@@ -1,5 +1,6 @@
 package net.kirinboy.training.unittest.ai;
 
+import net.kirinboy.training.unittest.*;
 import org.junit.jupiter.api.Test;
 import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.*;

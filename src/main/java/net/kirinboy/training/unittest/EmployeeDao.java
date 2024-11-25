@@ -1,4 +1,4 @@
-package net.kirinboy.training.unittest.ai;
+package net.kirinboy.training.unittest;
 
 public class EmployeeDao {
     public Employee getById(long employeeId) {

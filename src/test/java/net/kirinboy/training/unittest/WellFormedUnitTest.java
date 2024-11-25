@@ -1,9 +1,5 @@
 package net.kirinboy.training.unittest;
 
-import net.kirinboy.training.unittest.ai.Employee;
-import net.kirinboy.training.unittest.ai.EmployeeDao;
-import net.kirinboy.training.unittest.ai.EmployeeDto;
-import net.kirinboy.training.unittest.ai.EmployeeService;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
