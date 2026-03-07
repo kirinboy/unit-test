@@ -8,7 +8,7 @@ public class EmployeeService {
     }
 
     public Employee getById(long employeeId) {
-        if (employeeId == 0) {
+        if (employeeId <= 0) {
             throw new IllegalArgumentException("empty employeeId");
         }
         Employee employee = employeeDao.getById(employeeId);
